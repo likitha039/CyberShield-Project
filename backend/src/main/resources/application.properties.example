@@ -1,0 +1,34 @@
+# ==============================================================================
+# CyberShield Spring Boot Configuration Example
+# Copy to application.properties and fill in your local MySQL & JWT secrets.
+# ==============================================================================
+
+spring.application.name=cybershield-backend
+server.port=8080
+
+# MySQL 8.x Database Connection
+spring.datasource.url=jdbc:mysql://localhost:3306/cybershield_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=CHANGE_ME_MYSQL_PASSWORD
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA & Hibernate Settings
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+
+# Optional: Run SQL initialization scripts on startup (set to 'never' after initial setup)
+spring.sql.init.mode=never
+
+# JWT Security Configuration (Use a 256-bit+ Base64-encoded secret in production)
+app.jwt.secret=Q3liZXJTaGllbGRTZWN1cmVKV1RTZWNyZXRLZXlGb3JUb2tlblNpZ25pbmdNaW5pbXVtMjU2Qml0cw==
+app.jwt.expiration-ms=86400000
+
+# CORS Allowed Frontend Origins
+app.cors.allowed-origins=http://localhost:3000,http://localhost:5173
+
+# OpenAPI / Swagger UI
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
